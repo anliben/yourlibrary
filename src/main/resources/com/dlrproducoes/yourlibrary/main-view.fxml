@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER" prefHeight="800.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dlrproducoes.yourlibrary.MainController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="https://i.ibb.co/z6fg545/logo.jpg" />
+      </image></ImageView>
+
+    <Label fx:id="welcomeText" text="Compositor de Materiais">
+      <font>
+         <Font name="System Bold" size="14.0" />
+      </font></Label>
+    <TableView fx:id="tableView" editable="true" tableMenuButtonVisible="true">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></TableView>
+   <HBox alignment="TOP_CENTER" prefHeight="91.0" prefWidth="248.0">
+      <children>
+          <Button onAction="#mostrarSobre" prefHeight="30.0" prefWidth="100.0" text="Sobre">
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
+         </Button>
+         <Button layoutX="240.0" layoutY="10.0" onAction="#goToNew" prefHeight="30.0" prefWidth="100.0" text="Create">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button onAction="#onHelloButtonClick" prefHeight="30.0" prefWidth="100.0" text="Continuar">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+            <HBox.margin>
+               <Insets left="20.0" />
+            </HBox.margin>
+         </Button>
+      </children>
+   </HBox>
+</VBox>
