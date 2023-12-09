@@ -13,7 +13,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -62,10 +61,8 @@ public class MainController implements Initializable {
 
     @FXML
     protected void onHelloButtonClick(ActionEvent event) {
-        String poloSelected = tableView.getSelectionModel().getSelectedItems().getFirst().getNome();
-
         try {
-
+            String poloSelected = tableView.getSelectionModel().getSelectedItems().getFirst().getNome();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaSetor.fxml"));
             Parent home_page_parent = loader.load();
 
@@ -84,17 +81,13 @@ public class MainController implements Initializable {
 
 
             app_stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException("Erro ao carregar o arquivo FXML", e);
-        } catch (Exception e) {
-            // Desempacote a exceção real e imprima a stack trace para depuração
-            Throwable cause = e.getCause();
-            if (cause != null) {
-                cause.printStackTrace();
-            }
-            throw new RuntimeException("Erro durante a inicialização da tela", e);
+        }catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Nenhum Polo selecionado");
+            alert.setHeaderText("Selecionar polo");
+            alert.setContentText("Voce deve selecionar algum polo!");
+            alert.show();
         }
-
     }
 
     private void goToEdit(Polo polo, ActionEvent event){

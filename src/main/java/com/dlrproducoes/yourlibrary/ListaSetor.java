@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -20,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutionException;
 
 public class ListaSetor implements Initializable {
 
@@ -102,9 +100,8 @@ public class ListaSetor implements Initializable {
 
     @FXML
     protected void onHelloButtonClick(ActionEvent event) {
-        String poloSelected = tableView.getSelectionModel().getSelectedItems().getFirst().getNome();
         try {
-
+            String poloSelected = tableView.getSelectionModel().getSelectedItems().getFirst().getNome();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ListaUser.fxml"));
             Parent home_page_parent = loader.load();
 
@@ -122,17 +119,14 @@ public class ListaSetor implements Initializable {
             app_stage.setHeight(800);
             app_stage.setScene(scene);
             app_stage.show();
-        } catch (IOException e) {
-            throw new RuntimeException("Erro ao carregar o arquivo FXML", e);
-        } catch (Exception e) {
-            // Desempacote a exceção real e imprima a stack trace para depuração
-            Throwable cause = e.getCause();
-            if (cause != null) {
-                cause.printStackTrace();
-            }
-            throw new RuntimeException("Erro durante a inicialização da tela", e);
-        }
 
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Nenhum Colaborador selecionado");
+            alert.setHeaderText("Selecionar colaborador");
+            alert.setContentText("Voce deve selecionar algum colaborador!");
+            alert.show();
+        }
     }
 
     @FXML
